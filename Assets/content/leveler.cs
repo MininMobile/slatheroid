@@ -10,8 +10,10 @@ public class leveler : MonoBehaviour {
     List<GameObject> prefabs = new List<GameObject> { };
 
     void Start() {
-        if (_block == null) throw new System.NullReferenceException("Didn't specify wall prefab for leveler.cs");
-        if (_levels == null) throw new System.NullReferenceException("Didn't specify json level for leveler.cs");
+        if (_block == null)
+            throw new System.NullReferenceException("Didn't specify wall prefab for leveler.cs");
+        if (_levels == null)
+            throw new System.NullReferenceException("Didn't specify json level for leveler.cs");
         
         LoadLevel(_levels, _lvl);
 	}
@@ -19,6 +21,7 @@ public class leveler : MonoBehaviour {
     void LoadLevel(List<TextAsset> levels, int lvl = 0) {
         var level = JsonUtility.FromJson<LevelType>(levels[lvl].ToString());
 
-        if (level.level.ToArray().Length != Mathf.Round(level.level.ToArray().Length)) throw new System.IndexOutOfRangeException("Specified level has incorrect amount of lines");
+        if (level.level.ToArray().Length/level.width != Mathf.Round(level.level.ToArray().Length/level.width))
+            throw new System.IndexOutOfRangeException("Specified level has incorrect amount of lines");
     }
 }
