@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelType : MonoBehaviour {
+public class LevelType {
     public int width;
-    public string[] level;
+    public List<string> level;
 }
