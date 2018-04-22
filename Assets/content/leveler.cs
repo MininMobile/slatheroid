@@ -15,11 +15,16 @@ public class leveler : MonoBehaviour {
         if (_levels == null)
             throw new System.NullReferenceException("Didn't specify json level for leveler.cs");
 	}
-    
+
     void LoadLevel(List<TextAsset> levels, int lvl = 0) {
         var level = JsonUtility.FromJson<LevelType>(levels[lvl].ToString());
 
-        if (level.level.ToArray().Length/level.width != Mathf.Round(level.level.ToArray().Length/level.width))
+        if (level.level.ToArray().Length / level.width != Mathf.Round(level.level.ToArray().Length / level.width))
             throw new System.IndexOutOfRangeException("Specified level has incorrect amount of lines");
+
+        while (prefabs.ToArray().Length >= 1) {
+            Destroy(prefabs[0]);
+            prefabs.Remove(prefabs[0]);
+        }
     }
 }
