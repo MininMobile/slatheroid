@@ -14,6 +14,8 @@ public class leveler : MonoBehaviour {
             throw new System.NullReferenceException("Didn't specify wall prefab for leveler.cs");
         if (_levels == null)
             throw new System.NullReferenceException("Didn't specify json level for leveler.cs");
+
+        LoadLevel(_levels, _lvl);
 	}
 
     void LoadLevel(List<TextAsset> levels, int lvl = 0) {
@@ -25,6 +27,31 @@ public class leveler : MonoBehaviour {
         while (prefabs.ToArray().Length >= 1) {
             Destroy(prefabs[0]);
             prefabs.Remove(prefabs[0]);
+        }
+
+        var line = 0;
+        var lineProgress = 0;
+        for (var i = 0; i < level.level.ToArray().Length; i++) {
+            lineProgress++;
+
+            switch (level.level[i]) {
+                case "0":
+                    break;
+                case "1":
+                    var prefab = Instantiate(_block);
+                    double v = line * 0.64;
+                    double h = lineProgress * 0.64;
+                    prefab.transform.Translate((float)h, (float)-v, 1);
+                    break;
+                case "s":
+                    // Set Spawn
+                    break;
+            }
+
+            if (lineProgress == level.width) {
+                line++;
+                lineProgress = 0;
+            }
         }
     }
 }
