@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class leveler : MonoBehaviour {
+    public GameObject _player;
     public GameObject _block;
     public List<TextAsset> _levels;
     public int _lvl;
@@ -29,22 +30,27 @@ public class leveler : MonoBehaviour {
             prefabs.Remove(prefabs[0]);
         }
 
+        double h;
+        double v;
+
         var line = 0;
         var lineProgress = 0;
         for (var i = 0; i < level.level.ToArray().Length; i++) {
             lineProgress++;
-
+            
             switch (level.level[i]) {
                 case "0":
                     break;
                 case "1":
                     var prefab = Instantiate(_block);
-                    double v = line * 0.64;
-                    double h = lineProgress * 0.64;
+                    v = line * 0.64;
+                    h = lineProgress * 0.64;
                     prefab.transform.Translate((float)h, (float)-v, 1);
                     break;
                 case "s":
-                    // Set Spawn
+                    v = line * 0.64;
+                    h = lineProgress * 0.64;
+                    _player.transform.Translate((float)h, (float)-v, 1);
                     break;
             }
 
