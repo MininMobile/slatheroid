@@ -45,12 +45,12 @@ public class leveler : MonoBehaviour {
                     var prefab = Instantiate(_block);
                     v = line * 0.64;
                     h = lineProgress * 0.64;
-                    prefab.transform.Translate((float)h, (float)-v, 1);
+                    prefab.transform.Translate((float)h, (float)-v, 0);
                     break;
                 case "s":
                     v = line * 0.64;
                     h = lineProgress * 0.64;
-                    _player.transform.Translate((float)h, (float)-v, 1);
+                    _player.transform.Translate((float)h, (float)-v, 0);
                     break;
             }
 
