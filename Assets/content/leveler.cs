@@ -14,8 +14,6 @@ public class leveler : MonoBehaviour {
             throw new System.NullReferenceException("Didn't specify wall prefab for leveler.cs");
         if (_levels == null)
             throw new System.NullReferenceException("Didn't specify json level for leveler.cs");
-        
-        LoadLevel(_levels, _lvl);
 	}
     
     void LoadLevel(List<TextAsset> levels, int lvl = 0) {
