@@ -10,7 +10,8 @@ public class gun : MonoBehaviour {
 
     void Update() {
         if (Time.time >= timestamp && Input.GetMouseButton(0)) {
-            Instantiate(bullet, transform.position, transform.rotation);
+            var b = Instantiate(bullet, transform.position, transform.rotation);
+            b.transform.Rotate(0, 0, 90);
             timestamp = Time.time + delay;
         }
     }
