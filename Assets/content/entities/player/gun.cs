@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class gun : MonoBehaviour {
-    public GameObject bullet;
     public float delay = 0.33f;
 
     float timestamp;
 
     void Update() {
-        if (Time.time >= timestamp && Input.GetMouseButton(0)) {
-            var b = Instantiate(bullet, transform.position, transform.rotation);
-            b.transform.Rotate(0, 0, 90);
+        Vector2 direction = Vector2.left;
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, direction);
+        Debug.DrawRay(transform.position, direction);
+
+
+        /*if (Time.time >= timestamp && Input.GetMouseButton(0)) {
+            
+            
             timestamp = Time.time + delay;
-        }
+        }*/
     }
 }
