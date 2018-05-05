@@ -404,4 +404,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 501cf4eb69ce8b34f9be6cb0a76d491a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 1077312027}
   delay: 0.33
